@@ -58,7 +58,6 @@ main() {
 	for mp in "${snapshot_mountpoints[@]}"; do
 		umount "$mp"
 	done
-	echo "Done!"
 
 	# delete any previous snapshots having the "$snapshot_prefix", if requested
 	if [[ "$delete_old_snapshots" == "true" ]]; then
@@ -89,6 +88,9 @@ while [[ "$1" ]]; do
 
 	 	-d|--delete )
 			delete_old_snapshots="true"
+			shift
+			continue
+			;;
 
 	 	* )
 			break
